@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Image Puzzle (IT SOURCECODE)</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/image-puzzle.css" rel="stylesheet" />
+    <script src="js/image-puzzle.js"></script>
+</head>
+
+<body class="bg-info">
+    <div id="collage">
+        <h2 id="titulo">Juego de puzzle (Completa la imagen)</h2>
+        <hr />
+        <div id="playPanel" style="padding:5px;display:none;">
+            <h3 id="imgTitle"></h3>
+            <hr />
+            <div style="display:inline-block; margin:auto; width:95%; vertical-align:top;">
+                <ul id="sortable" class="sortable"></ul>
+                <div id="actualImageBox">
+                    <div id="stepBox">
+                        
+                    </div>
+                    <div id="timeBox">
+                        Tiempo: <span id="timerPanel"></span> secs
+                    </div>
+                    <img id="actualImage" />
+                    <p id="levelPanel">
+                        <input type="radio" name="level" id="hard" checked="checked" value="4" onchange="imagePuzzle.startGame(images, this.value);"
+                        /> <label for="hard">Dificil</label>
+                        
+                    </p>
+                    <div>
+                       
+                        <button id="newPhoto" type="button" class="btn" onclick="restart();">Cambiar imagen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="gameOver" style="display:none;">
+            <div style="background-color: greenyellow; padding: 5px 10px 20px 10px; text-align: center; ">
+                <h2 style="text-align:center">FELICIDADES!!!!</h2>
+            <br /> Haz podido completar todos los niveles
+                <br />  ¡¡¡¡¡ERES EL MEJORRRRR!!!!!.
+                <br /> Tiempo en completarlo: <span class="timeCount">0</span> segundos<br />
+                <br />
+                <div>
+                    <form action = "FINAL.html">
+                        <button>Finalizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var images = [
+                { src: 'images/PUZZLES/1.png', title: 'Satelite' },
+                { src: 'images/PUZZLES/2.png', title: 'Ollo negro' },
+                { src: 'images/PUZZLES/3.png', title: 'Sistema solar' },
+                { src: 'images/PUZZLES/4.png', title: 'Luna' },
+                { src: 'images/PUZZLES/5.png', title: 'Lluvia de estrellas' },
+                { src: 'images/PUZZLES/6.png', title: 'Tierra y sol' },
+                { src: 'images/PUZZLES/7.png', title: 'Estrellas' },
+                { src: 'images/PUZZLES/8.png', title: 'Interplanetas' },
+                { src: 'images/PUZZLES/9.png', title: 'Saturno' },
+                { src: 'images/PUZZLES/10.png', title: 'Media noche' },
+                { src: 'images/PUZZLES/11.png', title: 'Viaje espacial' },
+                { src: 'images/PUZZLES/12.png', title: 'Despegue' },
+                { src: 'images/PUZZLES/13.png', title: 'Viaje' },
+                { src: 'images/PUZZLES/14.png', title: 'Tierra mutante' },  
+                { src: 'images/PUZZLES/15.png', title: 'Meteorito' }
+
+            ];
+
+            window.onload = function () {
+                var gridSize = document.querySelector('#levelPanel input[type="radio"]:checked').getAttribute('value');
+                imagePuzzle.startGame(images, gridSize);
+            };
+            function restart() {
+                var gridSize = document.querySelector('#levelPanel input[type="radio"]:checked').getAttribute('value');
+                imagePuzzle.startGame(images, gridSize);
+            }
+            function rules() {
+                alert('Re arrange the image parts in a way that it correctly forms the picture. \nThe no. of steps taken will be counted.');
+            }
+        </script>
+    </div>
+</body>
+</html>
